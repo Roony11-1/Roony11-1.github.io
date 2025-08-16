@@ -13,7 +13,18 @@ const Expositor = () => {
 
     const handleClick = (seccion) => {
         setSeccion(seccion);
-        contenidoRef.current?.scrollIntoView({ behavior: 'smooth' });
+
+        const header = document.querySelector(".cuerpoPagina-expositor-header");
+        const alturaHeader = header?.offsetHeight || 0;
+
+        // posición absoluta del elemento a mostrar
+        const topPos = contenidoRef.current.getBoundingClientRect().top + window.scrollY;
+
+        // scroll suave hasta la posición compensada
+        window.scrollTo({
+            top: topPos - alturaHeader - 90, // restamos altura del header
+            behavior: "smooth"
+        });
     };
 
     const renderContenido = () => {
@@ -32,10 +43,9 @@ const Expositor = () => {
                     <Boton onClick={() => handleClick('contacto')}>Contacto</Boton>
                 </nav>
             </section>
-
+            <br /><hr ref={contenidoRef} />
             <section
                 className="cuerpoPagina-expositor-contenido"
-                ref={contenidoRef} // asignamos la referencia
             >
                 {renderContenido()}
             </section>
