@@ -5,15 +5,21 @@ import { Servicios } from "./Body/Servicios"
 import { Contacto } from "./Body/Contacto"
 import { Boton } from './Body/Boton.jsx'
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 const Expositor = () => {
     const [seccion, setSeccion] = useState('pilares');
+    const contenidoRef = useRef(null); // referencia a la sección de contenido
+
+    const handleClick = (seccion) => {
+        setSeccion(seccion);
+        contenidoRef.current?.scrollIntoView({ behavior: 'smooth' });
+    };
 
     const renderContenido = () => {
-        if (seccion === 'pilares') return <p><Pilares/></p>;
-        if (seccion === 'servicios') return <p><Servicios/></p>;
-        if (seccion === 'contacto') return <p><Contacto/></p>;
+        if (seccion === 'pilares') return <Pilares />;
+        if (seccion === 'servicios') return <Servicios />;
+        if (seccion === 'contacto') return <Contacto />;
         return null;
     };
 
@@ -21,13 +27,16 @@ const Expositor = () => {
         <div className="cuerpoPagina-expositor">
             <section className="cuerpoPagina-expositor-header">
                 <nav className="cuerpoPagina-expositor-header-nav">
-                    <Boton onClick={() => setSeccion('pilares')}>Pilares</Boton>
-                    <Boton onClick={() => setSeccion('servicios')}>Servicios</Boton>
-                    <Boton onClick={() => setSeccion('contacto')}>Contacto</Boton>
+                    <Boton onClick={() => handleClick('pilares')}>Pilares</Boton>
+                    <Boton onClick={() => handleClick('servicios')}>Servicios</Boton>
+                    <Boton onClick={() => handleClick('contacto')}>Contacto</Boton>
                 </nav>
             </section>
 
-            <section className="cuerpoPagina-expositor-contenido">
+            <section
+                className="cuerpoPagina-expositor-contenido"
+                ref={contenidoRef} // asignamos la referencia
+            >
                 {renderContenido()}
             </section>
         </div>
