@@ -245,3 +245,10 @@
 .contact-form button:hover {
     background: #00414a;
 }
+
+.footer {
+    background: #222;
+    color: #fff;
+    text-align: center;
+    padding: 1.5rem 0;
+}
