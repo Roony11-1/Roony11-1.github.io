@@ -5,9 +5,9 @@ import {Body} from './Body.jsx'
 export function App()
 {
     return(
-        <>
+        <main>
             <Header></Header>
             <Body></Body>
-        </>
+        </main>
     )
 }
