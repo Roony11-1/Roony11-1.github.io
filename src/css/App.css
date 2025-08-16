@@ -1,15 +1,16 @@
 /* Botones generales */
+/* Botones para móvil (estilo por defecto) */
 .boton {
     cursor: pointer;
-    font-size: 2rem;
-    padding: 6px 16px;
+    font-size: 1.2rem;   /* más pequeño en móviles */
+    padding: 4px 10px;
     border: 1px solid #004755;
     border-radius: 35%;
     background: #005F73;
     color: #fff;
-    height: 85px;
+    height: 60px;
     width: 100%;
-    max-width: 300px;
+    max-width: 200px;
 }
 
 .boton:hover {
@@ -17,13 +18,13 @@
     border-radius: 35%;
 }
 
-/* Ajustes para pantallas pequeñas (móviles) */
-@media (max-width: 600px) {
+/* Estilos para pantallas mayores a 768px (desktop/tablet) */
+@media (min-width: 768px) {
     .boton {
-        font-size: 1.2rem;   /* más pequeño */
-        padding: 4px 10px;   /* menos relleno */
-        height: 60px;        /* menos alto */
-        max-width: 200px;    /* ancho máximo menor */
+        font-size: 2rem;
+        padding: 6px 16px;
+        height: 85px;
+        max-width: 300px;
     }
 }
 
